@@ -8,19 +8,19 @@ import "./interfaces/ILayerZeroUserApplicationConfig.sol";
 import "./interfaces/ILayerZeroEndpoint.sol";
 import "./libraries/BytesLib.sol";
 
-error Forbidden();
-error NoTrustedRemote();
-error MinGasLimitNotSet();
-error GasLimitTooLow();
-error InvalidAdapterParams();
-error NoTrustedPathRecord();
-error InvalidMinGas();
-
 /*
  * a generic LzReceiver implementation
  */
 abstract contract LzApp is Ownable, ILayerZeroReceiver, ILayerZeroUserApplicationConfig {
     using BytesLib for bytes;
+
+    error Forbidden();
+    error NoTrustedRemote();
+    error MinGasLimitNotSet();
+    error GasLimitTooLow();
+    error InvalidAdapterParams();
+    error NoTrustedPathRecord();
+    error InvalidMinGas();
 
     ILayerZeroEndpoint public immutable lzEndpoint;
     mapping(uint16 => bytes) public trustedRemoteLookup;
